@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impresora 24 horas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+    <main class="contenedor">
+
+        <h1>Impresora 24 horas</h1>
+
+        <p>Bienvenido al sistema de impresión.</p>
+
+        <h2>Cargar documento PDF</h2>
+
+        <form action="/cargar" method="POST" enctype="multipart/form-data">
+
+            <input
+                type="file"
+                name="documento"
+                accept=".pdf,application/pdf"
+                required
+            >
+
+            <button type="submit">Cargar documento</button>
+
+        </form>
+
+        <p>
+            <a href="/pedidos">Ver historial de pedidos</a>
+        </p>
+
+        <p>
+            <a href="/cerrar_sesion">Cerrar sesión</a>
+        </p>
+
+        <p>
+            <button type="button" onclick="history.back()">← Volver</button>
+        </p>
+
+    </main>
+
+</body>
+</html>

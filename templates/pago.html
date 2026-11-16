@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pago con QR</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+    <main class="contenedor">
+
+        <h1>Pago con QR</h1>
+
+        <p>Pedido número: {{ pedido_id }}</p>
+
+        <h2>Total a pagar: ${{ total }}</h2>
+
+        <p>Escaneá este código QR para simular el pago.</p>
+
+        <div id="codigo-qr"></div>
+
+        <button type="button" onclick="window.location.href='/cerrar_sesion'">
+            ← Volver
+        </button>
+
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+    <script>
+        const direccion = window.location.origin +
+            "/simular_pago/{{ pedido_id }}";
+
+        new QRCode(document.getElementById("codigo-qr"), {
+            text: direccion,
+            width: 220,
+            height: 220
+        });
+    </script>
+
+</body>
+</html>

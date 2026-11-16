@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmar pago</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+    <main class="contenedor">
+
+        <h1>Confirmar pago</h1>
+
+        <h2>Total: ${{ total }}</h2>
+
+        <form action="{{ url_for('confirmar_pago', pedido_id=pedido_id) }}" method="POST">
+            <button type="submit">Confirmar pago</button>
+        </form>
+
+        <button type="button" onclick="history.back()">← Volver</button>
+
+    </main>
+
+</body>
+</html>

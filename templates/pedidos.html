@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historial de pedidos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+    <main class="contenedor">
+
+        <h1>Historial de pedidos</h1>
+
+        {% if pedidos %}
+
+            <div class="tabla-contenedor">
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>Número</th>
+                            <th>Documento</th>
+                            <th>Páginas</th>
+                            <th>Cantidad</th>
+                            <th>Tipo</th>
+                            <th>Pago</th>
+                            <th>Total</th>
+                            <th>Fecha</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        {% for pedido in pedidos %}
+
+                            <tr>
+                                <td>{{ pedido[0] }}</td>
+                                <td>{{ pedido[1] }}</td>
+                                <td>{{ pedido[2] }}</td>
+                                <td>{{ pedido[3] }}</td>
+                                <td>{{ pedido[7] }}</td>
+                                <td>{{ pedido[8] }}</td>
+                                <td>${{ pedido[5] }}</td>
+                                <td>{{ pedido[6] }}</td>
+                            </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        {% else %}
+
+            <p>Todavía no hay pedidos registrados.</p>
+
+        {% endif %}
+
+        <p>
+            <a href="/inicio">Volver al inicio</a>
+        </p>
+
+        <button type="button" onclick="history.back()">← Volver</button>
+
+    </main>
+
+</body>
+</html>
